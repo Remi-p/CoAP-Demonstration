@@ -226,7 +226,6 @@ class CoAP(object):
             logger.debug("send_datagram - " + str(message))
             serializer = Serializer()
             message = serializer.serialize(message)
-
             self._socket.sendto(message, (host, port))
 
     def add_resource(self, path, resource):
