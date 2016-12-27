@@ -8,14 +8,33 @@
 
 ![Structure picture](Course/Documents/Structure.png)
 
-### Sensor
+## Sensor
 
 Sensor's role is played by [coSense](https://github.com/okleine/coSense).
 
-### Server
+### Usage
+
+Open the project into Android Studio (*File* -> *Open...*), install the APK on your device.
+
+Launch *Coap Thermometer* from your device, activate the server and the sensor.
+
+The ambient light value is accessible through `coap://[ip_addr]/light`.
+
+## Server
 
 A server example is made with [CoAPthon](https://github.com/Tanganelli/CoAPthon).
 
-### Client
+### Usage
+
+In the `Server/`, directory, issue the following command :
+```
+$ python coapserver.py -i <ip address> -p <port>
+```
+
+Please note, if your default Python installation is the third version, use `python2 coapserver.py ...`.
+
+## Client
 
 The [spitfirefox](https://github.com/okleine/spitfirefox) CoAP client is used.
+
+Any client can be used, like [Copper (Cu)](https://addons.mozilla.org/en-US/firefox/addon/copper-270430/) for Firefox for instance.
