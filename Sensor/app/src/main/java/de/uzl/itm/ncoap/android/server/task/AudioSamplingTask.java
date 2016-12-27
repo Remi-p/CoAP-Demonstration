@@ -38,8 +38,6 @@ public class AudioSamplingTask implements Runnable{
                 }
             }
 
-            mainActivity.setNoiseLevel(highestLevel);
-
             mainActivity.getHandler().postDelayed(this, 200);
         }
         catch (Exception e) {

@@ -1,5 +1,7 @@
 package de.uzl.itm.ncoap.android.server.resource;
 
+import android.util.Log;
+
 /**
  * Created by olli on 18.05.15.
  */

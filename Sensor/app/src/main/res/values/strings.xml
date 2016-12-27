@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">COSENSE</string>
+    <string name="app_name">CoAP Thermometer</string>
     <string name="app_subtitle">CoAP Server for mobile Sensors</string>
 
     <string name="ip_label">IP:</string>

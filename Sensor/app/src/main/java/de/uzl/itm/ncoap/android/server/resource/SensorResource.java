@@ -35,8 +35,12 @@ public abstract class SensorResource<V, T extends SensorValue<V>> extends Observ
             "exp";
 
 
+    //private static String PLAIN_TEXT_TEMPLATE =
+    //        "Value of \"%s\" at latitude %.10f and longitude %.10f is %f .";
+    // TODO <== CHANGES HERE FOR DOUBLE
+
     private static String PLAIN_TEXT_TEMPLATE =
-            "Value of \"%s\" at latitude %.10f and longitude %.10f is %d .";
+            "%f";
 
 
     private static String TURTLE_XSD_PREFIX =
@@ -140,8 +144,7 @@ public abstract class SensorResource<V, T extends SensorValue<V>> extends Observ
             return turtle.getBytes(CoapMessage.CHARSET);
         }
 
-        return String.format(Locale.ENGLISH, PLAIN_TEXT_TEMPLATE, getPlainObservedPropertyName(),
-                lat, lon, plainValue).getBytes(CoapMessage.CHARSET);
+        return String.format(Locale.ENGLISH, PLAIN_TEXT_TEMPLATE, plainValue).getBytes(CoapMessage.CHARSET);
 
     }
 
