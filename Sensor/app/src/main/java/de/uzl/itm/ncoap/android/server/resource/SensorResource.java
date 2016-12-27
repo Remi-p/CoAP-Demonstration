@@ -40,7 +40,8 @@ public abstract class SensorResource<V, T extends SensorValue<V>> extends Observ
     // TODO <== CHANGES HERE FOR DOUBLE
 
     private static String PLAIN_TEXT_TEMPLATE =
-            "%f";
+            "\"%f\"";
+    // We put quote, so that CoAPthon understands it is a String
 
 
     private static String TURTLE_XSD_PREFIX =

@@ -5,6 +5,7 @@ import sys
 from coapthon.resources.resource import Resource
 from coapthon.server.coap import CoAP
 from exampleresources import SensorResource
+from lightresource import LightResource
 
 __author__ = 'giacomo (edited by sdasilva)'
 
@@ -13,6 +14,7 @@ class CoAPServer(CoAP):
     def __init__(self, host, port, multicast=False):
         CoAP.__init__(self, (host, port), multicast)
         self.add_resource('sensor/', SensorResource())
+        self.add_resource('light/', LightResource())
         print "CoAP Server start on " + host + ":" + str(port)
         print self.root.dump()
 
