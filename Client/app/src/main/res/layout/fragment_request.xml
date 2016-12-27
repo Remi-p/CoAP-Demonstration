@@ -1,0 +1,230 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context="de.uzl.itm.ncoap.android.client.CoapClientActivity">
+
+    <!--Server (name or IP) and port-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText style="@style/UriComponent"
+            android:id="@+id/txt_server"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="@string/server_hint"
+            android:text="@string/server_default"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText style="@style/UriComponent"
+            android:id="@+id/txt_port"
+            android:layout_width="wrap_content"
+            android:text="@string/port_hint"/>
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <!--Buttons-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+
+        <Spinner
+            android:id="@+id/spn_methods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:entries="@array/coap_methods"
+            />
+
+        <RadioGroup
+            android:id="@+id/rad_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@+id/spn_methods"
+            android:layout_toEndOf="@+id/spn_methods"
+            android:layout_centerVertical="true"
+            >
+
+            <RadioButton
+                android:id="@+id/rad_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/con_label"/>
+
+            <RadioButton
+                android:id="@+id/rad_non"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/non_label"/>
+
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/chk_observation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/obs_label"/>
+
+    </RelativeLayout>
+
+    <!--Service-->
+    <AutoCompleteTextView style="@style/UriComponent" android:id="@+id/txt_service" android:hint="@string/service_hint"
+        android:layout_width="match_parent" android:completionThreshold="1"/>
+
+    <!--Make the rest scrollable-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+            >
+
+                <TextView style="@style/Heading"
+                    android:text="@string/request_options_label"/>
+
+                <!--Options-->
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="2"
+                    >
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                            android:text="@string/ifmatch_no"
+                        />
+                        <TextView style="@style/OptionLabel"
+                            android:text="@string/ifmatch_label"
+                        />
+                        <EditText style="@style/OptionValue"
+                            android:hint="@string/ifmatch_hint"
+                            android:id="@+id/txt_ifmatch"
+                        />
+                    </TableRow>
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/etag_no"
+                        />
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/etag_label"
+                        />
+                        <EditText style="@style/OptionValue"
+                                  android:id="@+id/txt_etag_request"
+                                  android:hint="@string/etag_hint"
+
+                        />
+                    </TableRow>
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/ifnonematch_no"
+                        />
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/ifnonematch_label"
+                        />
+                        <CheckBox android:id="@+id/chk_ifnonematch"
+                        />
+                    </TableRow>
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/contentformat_no"
+                        />
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/contentformat_label"
+                        />
+                        <EditText style="@style/OptionValue"
+                                  android:id="@+id/txt_contentformat"
+                                  android:hint="@string/contentformat_hint"
+                        />
+                    </TableRow>
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/accept_no"
+                        />
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/accept_label"
+                        />
+                        <EditText style="@style/OptionValue"
+                                  android:id="@+id/txt_accept"
+                                  android:hint="@string/accept_hint"
+                        />
+                    </TableRow>
+
+                    <TableRow style="@style/OptionRow">
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/block2_no"
+                        />
+
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/block2_label"
+                        />
+
+                        <Spinner style="@style/OptionValue"
+                                 android:id="@+id/spn_block2"
+                                 android:entries="@array/blocksizes"
+                        />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/block1_no"
+                        />
+
+                        <TextView style="@style/OptionLabel"
+                                  android:text="@string/block1_label"
+                        />
+
+                        <Spinner style="@style/OptionValue"
+                                 android:id="@+id/spn_block1"
+                                 android:entries="@array/blocksizes"
+                        />
+                    </TableRow>
+                </TableLayout>
+
+                <!-- Payload -->
+                <TextView style="@style/Heading"
+                        android:text="@string/request_payload_label"/>
+
+                <EditText style="@style/Payload"
+                    android:id="@+id/txt_payload"
+                    android:hint="@string/payload_undefined"/>
+
+            </LinearLayout>
+    </ScrollView>
+</LinearLayout>

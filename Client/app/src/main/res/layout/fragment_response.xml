@@ -1,0 +1,139 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="?android:windowBackground"
+    android:id="@+id/response_fragment"
+    >
+
+    <TextView
+        android:id="@+id/txt_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle"
+        android:padding="5dp"
+    />
+
+    <RelativeLayout
+        android:id="@+id/response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/txt_type_response"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:paddingRight="5dp"
+            android:text="Type..."/>
+
+        <TextView
+            android:id="@+id/txt_code_response"
+            android:layout_toRightOf="@id/txt_type_response"
+            android:layout_toEndOf="@id/txt_type_response"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:text="Code..."/>
+
+        <RadioGroup
+            android:id="@+id/rad_stop_observation_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+        >
+            <RadioButton
+                android:id="@+id/rad_stop_observation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stop_observation"
+            />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <!--Make the rest scrollable-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- OPTIONS -->
+            <TextView style="@style/Heading" android:text="@string/response_options_label"/>
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="2">
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_etag_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/etag_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/etag_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_etag_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_observe_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/observe_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/observe_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_observe_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_location_path_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/location_path_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/location_path_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_location_path_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_content_format_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/contentformat_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/contentformat_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_contenttype_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_max_age_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/max_age_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/max_age_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_max_age_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_location_query_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/location_query_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/location_query_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_location_query_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_block2_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/block2_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/block2_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_block2_response"/>
+                </TableRow>
+
+                <TableRow style="@style/OptionRow" android:id="@+id/tabrow_size1_response">
+                    <TextView style="@style/OptionLabel" android:text="@string/size1_no"/>
+                    <TextView style="@style/OptionLabel" android:text="@string/size1_label"/>
+                    <TextView style="@style/OptionValue" android:id="@+id/txt_size1_response"/>
+                </TableRow>
+            </TableLayout>
+
+            <!-- PAYLOAD -->
+            <TextView style="@style/Heading" android:text="@string/response_payload_label"/>
+
+            <TextView style="@style/Payload" android:id="@+id/txt_response_payload"
+                      android:hint="@string/payload_undefined"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
