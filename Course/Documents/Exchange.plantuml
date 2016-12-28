@@ -1,0 +1,16 @@
+@startuml
+participant "**Sensor**\nLocal IP" as Sensor
+participant "**Reverse Proxy**\nLocal IP | Internet IP" as Proxy
+actor "**Client**\nInternet IP" as Client
+
+Client -> Proxy : **GET**\n.well-known/core
+Proxy -> Client : **ACK**\n</light>;rt="rt2";if="if2",</sensor>;rt="rt1";if="if2",
+
+...
+
+Client -> Proxy : **GET**\n/light
+Proxy -> Sensor : **GET**\n/light
+Sensor -> Proxy : **ACK**\n"160.00000"
+Proxy -> Client : **ACK**\n"160.00000"
+
+@enduml

@@ -6,7 +6,7 @@
 
 ## Structure
 
-![Structure picture](Course/Documents/Structure.png)
+<p align="center"><img alt="Structure picture" src="Course/Documents/Structure.png"/></p>
 
 ## Sensor
 
@@ -38,3 +38,7 @@ Please note, if your default Python installation is the third version, use `pyth
 The [spitfirefox](https://github.com/okleine/spitfirefox) CoAP client is used.
 
 Any client can be used, like [Copper (Cu)](https://addons.mozilla.org/en-US/firefox/addon/copper-270430/) for Firefox for instance.
+
+## Diagram
+
+<p align="center"><img alt="Diagram picture" src="Course/Documents/Exchange.png"/></p>
