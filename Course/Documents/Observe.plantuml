@@ -1,0 +1,38 @@
+@startuml
+participant "**Sensor**\n(Server)" as Sensor
+actor "**Client**" as Client
+
+group Registration
+    note over Client: Creates\na token
+    Client -> Sensor : **GET /temperature**\nToken: 0x4a\nObserve: 0
+    note right: Registration
+    note over Sensor: Add entry in lists of observers
+    Sensor -> Client : **2.05 Content**\nToken: 0x4a\nObserve: 12\nPayload: 22.9 Cel
+    note left: Notification of\ncurrent state
+end
+
+...
+
+group Publishing
+    Sensor -> Client : **2.05 Content**\nToken: 0x4a\nObserve: 44\nPayload: 22.4 Cel
+    note left: Notification upon\na state changed
+    ...
+    Sensor -> Client : **2.05 Content**\nToken: 0x4a\nObserve: 60\nPayload: 23.0 Cel
+    note left: Notification upon\na state changed
+end
+
+...
+
+group Unregister
+    note over Client: Forget the observation\n> Forget the token
+    Sensor -> Client : **2.05 Content**\nToken: 0x4a\nObserver: 87\nPayload: 22.7 Cel
+    note left: Notification upon\na state changed
+
+    Client -> Sensor : **RST Message**
+    note right: Client doesn't\nknow the token\nIt sends a\nreset message
+    note over Sensor: Remove entry in list of observers
+end
+
+' Cf. https://tools.ietf.org/html/rfc7641
+
+@enduml
