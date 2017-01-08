@@ -276,7 +276,10 @@ class Serializer(object):
         if isinstance(value, unicode):
             value = str(value)
         if isinstance(value, str):
-            return bytearray(value, "utf-8")
+            try:
+                return bytearray(value, "utf-8")
+            except UnicodeDecodeError:
+                return bytearray("?", "utf-8")
         elif isinstance(value, int):
             return value
         else:
